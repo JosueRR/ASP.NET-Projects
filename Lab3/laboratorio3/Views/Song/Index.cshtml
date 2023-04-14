@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Song";
+}
+
+<h1>@ViewBag.MainTitle</h1>
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Song Name </th>
+                <th>Artist </th>
+                <th>Genre</th>
+                <th>Album</th>
+                <th>Release Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.SongName</td>
+                <td>@Model.Artists</td>
+                <td>@Model.Genre</td>
+                <td>@Model.Album</td>
+                <td>@Model.ReleaseDate</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div>
+    <button>Me gusta!</button>
+</div>
