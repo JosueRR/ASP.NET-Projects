@@ -1,0 +1,106 @@
+/* Josué Retana Rodríguez */
+/* This is a simple stylesheet for index */
+/* Quedo bien lindo :) */
+
+* {
+    font-family: 'Kumbh Sans', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* NAV BAR START */
+
+.navbar__container {
+    border-style: none;
+    border-width: 0;
+    border-color: transparent;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar__container .header__container {
+    margin: 0;
+    padding: 0;
+    background-color: #807D7A;
+}
+
+.navbar__container .header__container p {
+    color: white;
+    margin: 0;
+    padding-left: 54px;
+    padding-bottom: 24px;
+    font-size: 1.5rem;
+    font-weight: 700W;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #F0DFC5;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: #807D7A;
+    text-align: center;
+    padding: 28px 32px;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+li a:hover {
+    background-color: #E4D080;
+    transition: all 0.4s;
+}
+
+/* NAV BAR FINISH */
+
+/* MASCOTA START */
+
+.mascota__container {
+    text-align: center;
+    margin: 0px 100px 48px 100px;
+    padding: 0px 200px 48px 200px;
+}
+
+.mascota__container .mascota__container--img {
+    height: 10%;
+    width: 15%;
+}
+
+/* GENERAL */
+
+h1 {
+    font-size: 4rem;
+    color: white;
+    margin: 0;
+    padding-left: 48px;
+    padding-top: 12px;
+}
+
+h2 {
+    color: #807D7A;
+    margin: 48px 0px 48px 60px;
+    font-size: 2rem;
+}
+
+h4 {
+    text-align: center;
+    color: #333333;
+}
+
+p {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    font-weight: 700W;
+    color: #807D7A;
+}
