@@ -1,0 +1,35 @@
+﻿
+
+@{
+    ViewData["Tittle"] = "Pelicus";
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <h1> @ViewBag.MainTitle </h1>
+
+   <div>
+       <table class="table">
+           <thread>
+               <tr>
+                    <th>Movie Tittle</th>
+                    <th>Year</th>
+               </tr>
+           </thread>
+           <tbody>
+               @foreach(var item in Model)
+                {
+                    <tr>
+                        <td>@item.Nombre</td>
+                        <td>@item.Anno</td>
+                    </tr>
+                }
+            </tbody>
+       </table>
+   </div>
+</body>
+</html>
