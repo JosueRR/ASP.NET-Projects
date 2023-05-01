@@ -1,0 +1,30 @@
+﻿@page
+@model List<laboratorio5.Models.PeliculaModelo>;
+
+@{
+    ViewData["Title"] = "Peliculas";
+}
+
+<h1> Peliculas </h1>
+
+<div>
+    <table class="table">
+        <thread>
+            <tr>
+                <th>Movie Tittle</th>
+                <th>Year</th>
+            </tr>
+        </thread>
+        <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Nombre</td>
+                        <td>@item.Anno</td>
+                    </tr>
+                }
+            </tbody>
+    </table>
+</div>
+
+
