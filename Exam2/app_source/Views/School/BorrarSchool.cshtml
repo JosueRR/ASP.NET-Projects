@@ -34,7 +34,7 @@
                         </strong>
                     </div>
                     <div class="text-center mt-4">
-                        <input type="submit" class="btn btn-danger me-3" value="Yes, I'm sure" />
+                        <input id="delete-btn" type="submit" class="btn btn-danger me-3" value="Yes, I'm sure" />
                         <a class="btn btn-secondary" href="@Url.Action("Index", "School")">No, go back</a>
                     </div>
                     @Html.HiddenFor(model => model.Id)

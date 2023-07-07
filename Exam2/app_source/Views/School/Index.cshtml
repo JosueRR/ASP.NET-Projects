@@ -36,10 +36,10 @@
                     <td class="text-center">@item.NumeroAulas</td>
                     <td>@item.EsPublica</td>
                     <td>
-                        <a href="@Url.Action("EditarSchool", new { identificador = item.Id })" class="btn btn-info">Edit</a>
+                        <a id="edit-@item.Id" href="@Url.Action("EditarSchool", new { identificador = item.Id })" class="btn btn-info">Edit</a>
                     </td>
                     <td>
-                        <a href="@Url.Action("BorrarSchool", new { identificador = item.Id })" class="btn btn-danger">Delete</a>
+                        <a id="delete-@item.Id" href="@Url.Action("BorrarSchool", new { identificador = item.Id })" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
             }

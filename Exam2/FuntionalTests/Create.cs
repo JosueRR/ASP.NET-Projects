@@ -31,7 +31,7 @@ namespace FuntionalTests
             var schoolCreate = _driver.FindElement(By.Id("indexCreateSchool"));
             schoolCreate.Click();
 
-            Thread.Sleep(10000); // 2-second delay to observe the webpage before the assertd
+            Thread.Sleep(2000); // 2-second delay
 
 
             var NombreField = _driver.FindElement(By.Id("Nombre"));
@@ -41,7 +41,7 @@ namespace FuntionalTests
             var EsPublicaField = _driver.FindElement(By.Id("EsPublica"));
             var CrearSubmit = _driver.FindElement(By.Id("create-submit"));
 
-            Thread.Sleep(10000); // 2-second delay to observe the webpage before the assertd
+            Thread.Sleep(2000); // 2-second delay
 
 
             NombreField.SendKeys("CRUD");
@@ -51,7 +51,7 @@ namespace FuntionalTests
             EsPublicaField.SendKeys("False");
             CrearSubmit.Click();
 
-            Thread.Sleep(2000); // 2-second delay to observe the webpage before the assertd
+            Thread.Sleep(2000); // 2-second delay
 
             Assert.IsTrue(_driver.Url.Contains("CrearSchool"));
         }
