@@ -1,0 +1,58 @@
+﻿@*
+    Index of app: shows list of schools and admin. options
+*@
+
+@model List<app.Models.SchoolModel>
+
+@{
+    ViewData["Title"] = "School";
+}
+
+<h1><@ViewBag.MainTitle</h1>
+
+<div>
+    <a href="@Url.Action("CrearSchool", "School")"
+       class="btn btn-success"> Crear Escuela </a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Provincia</th>
+                <th>Estado</th>
+                <th>Cant. Aulas</th>
+                <th>Es Publica</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Nombre</td>
+                    <td>@item.Provincia</td>
+                    <td>@item.Estado</td>
+                    <td>@item.NumeroAulas</td>
+                    <td>@item.EsPublica</td>
+
+                    <td>
+                        @Html.ActionLink("Editar", "EditarSchool",
+                    new {identificador = item.Id},
+                    new {@class = "btn btn alert-info",
+                    @onclick = "return confirm('Desea editar esta escuela?')"})
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Borrar", "BorrarSchool",
+                    new {identificador = item.Id},
+                    new {@class = "btn btn alert-danger",
+                    @onclick = "return confirm('Desea borrar esta escuela?')"})
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,55 @@
+﻿@*
+    Form for editing a school in database
+*@
+
+@model app.Models.SchoolModel
+
+@{
+    ViewBag.Title = "Editar School";
+}
+
+<html>
+<head>
+</head>
+<body>
+    @using (Html.BeginForm("EditarSchool", "School", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <h1>Formulario de edición de escuelas</h1>
+        @Html.HiddenFor(model=>model.Id) // OJO ESTO SE AGREGO
+        <div class="form-horizontal">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Nombre)
+                @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control"})
+                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger"})
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Provincia)
+                @Html.TextBoxFor(model => model.Provincia, new { @class = "form-control"})
+                @Html.ValidationMessageFor(model => model.Provincia, "", new { @class = "text-danger"})
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Estado)
+                @Html.TextBoxFor(model => model.Estado, new { @class = "form-control"})
+                @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger"})
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.NumeroAulas)
+                @Html.TextBoxFor(model => model.NumeroAulas, new { @class = "form-control"})
+                @Html.ValidationMessageFor(model => model.NumeroAulas, "", new { @class = "text-danger"})
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.EsPublica)
+                @Html.TextBoxFor(model => model.EsPublica, new { @class = "form-control"})
+                @Html.ValidationMessageFor(model => model.EsPublica, "", new { @class = "text-danger"})
+            </div>
+
+            <input type="submit" class="btn btn-success" value="Editar" />
+        </div>
+    }
+</body>
+</html>

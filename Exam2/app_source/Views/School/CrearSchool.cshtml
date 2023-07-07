@@ -1,0 +1,66 @@
+﻿@*
+    Form for creating a new school in database
+*@
+
+@model app.Models.SchoolModel
+
+@{
+    ViewBag.Title = "Crear School";
+}
+
+<html>
+<head>
+</head>
+<body>
+    @if (ViewBag.Message != null)
+    {
+        if (ViewBag.ExitoAlCrear)
+        {
+            <div class="alert-success"> <h3> @ViewBag.Message </h3> </div>
+        }
+        else
+        {
+            <div class="alert-danger"> <h3> @ViewBag.Message </h3> </div>
+        }
+    }
+    @using (Html.BeginForm("CrearSchool", "school", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <h1>Formulario de creación de Escuelas</h1>
+        <div class="form-horizontal">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Nombre)
+                @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control"})
+                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger"})
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Provincia)
+                @Html.TextBoxFor(model => model.Provincia, new { @class = "form-control"})
+                @Html.ValidationMessageFor(model => model.Provincia, "", new { @class = "text-danger"})
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Estado)
+                @Html.TextBoxFor(model => model.Estado, new { @class = "form-control"})
+                @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger"})
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.NumeroAulas)
+                @Html.TextBoxFor(model => model.NumeroAulas, new { @class = "form-control"})
+                @Html.ValidationMessageFor(model => model.NumeroAulas, "", new { @class = "text-danger"})
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.EsPublica)
+                @Html.TextBoxFor(model => model.EsPublica, new { @class = "form-control"})
+                @Html.ValidationMessageFor(model => model.EsPublica, "", new { @class = "text-danger"})
+            </div>
+
+            <input type="submit" class="btn btn-success" value="Crear" />
+        </div>
+    }
+
+</body>
+</html>
