@@ -15,46 +15,47 @@
     @using (Html.BeginForm("EditarSchool", "School", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
-        <div class="container">
-            <h1 class="p-4">Edit a School</h1>
-            <div class="row justify-content-center">
-                <div class="col-md-6">
-                    <div class="form-group mb-3">
+        <h1 class="p-4"> Edit School </h1>
+        <div class="row justify-content-center">
+            <div class="col-md-6"> 
+                <div class="form-horizontal">
+
+                    <div class="form-group  mb-3">
                         @Html.LabelFor(model => model.Nombre)
-                        @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control"})
+                        @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger"})
                     </div>
 
                     <div class="form-group mb-3">
                         @Html.LabelFor(model => model.Provincia)
-                        @Html.TextBoxFor(model => model.Provincia, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.Provincia, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(model => model.Provincia, new { @class = "form-control"})
+                        @Html.ValidationMessageFor(model => model.Provincia, "", new { @class = "text-danger"})
                     </div>
 
                     <div class="form-group mb-3">
                         @Html.LabelFor(model => model.Estado)
-                        @Html.TextBoxFor(model => model.Estado, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(model => model.Estado, new { @class = "form-control"})
+                        @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger"})
                     </div>
 
                     <div class="form-group mb-3">
                         @Html.LabelFor(model => model.NumeroAulas)
-                        @Html.TextBoxFor(model => model.NumeroAulas, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.NumeroAulas, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(model => model.NumeroAulas, new { @class = "form-control"})
+                        @Html.ValidationMessageFor(model => model.NumeroAulas, "", new { @class = "text-danger"})
                     </div>
 
                     <div class="form-group mb-3">
                         @Html.LabelFor(model => model.EsPublica)
-                        @Html.TextBoxFor(model => model.EsPublica, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.EsPublica, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(model => model.EsPublica, new { @class = "form-control"})
+                        @Html.ValidationMessageFor(model => model.EsPublica, "", new { @class = "text-danger"})
                     </div>
-
-                    <div class="form-group text-center pt-3">
-                        <input type="submit" class="btn create-button" value="Editar" />
+                    <div class="text-center pt-3">
+                        <input type="submit" class="btn  create-button" value="Save Changes" />
                     </div>
                 </div>
             </div>
         </div>
+        @Html.HiddenFor(model=>model.Id)
     }
 </body>
 

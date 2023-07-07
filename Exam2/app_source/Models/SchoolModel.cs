@@ -5,25 +5,31 @@ namespace app.Models
 {
     public class SchoolModel
     {
+        // integer property representing the unique identifier of the school
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Debe ingresar un nombre")]
+        // string property representing the name of the school
+        [Required(ErrorMessage = "Debe ingresar un nombre válido")]
         [DisplayName("Nombre de la escuela")]
         public string? Nombre { get; set; }
 
-        [Required(ErrorMessage = "Debe ingresar un Provincia")]
+        // string property representing the province of the school
+        [Required(ErrorMessage = "Debe ingresar una provincia válida")]
         [DisplayName("Provincia de la escuela")]
         public string? Provincia { get; set;}
 
-        [Required(ErrorMessage = "Debe ingresar un Estado")]
+        // string property representing the state or district of the school
+        [Required(ErrorMessage = "Debe ingresar un estado válido")]
         [DisplayName("Estado o distrito de la escuela")]
         public string? Estado { get; set;}
 
-        [Required(ErrorMessage = "Debe ingresar un NumeroAulas")]
+        // integer property representing the number of classrooms in the school
+        [Required(ErrorMessage = "Debe ingresar un número de aulas válido")]
         [DisplayName("Cantidad de Aulas de la escuela")]
         public int? NumeroAulas { get; set;}
 
-        [Required(ErrorMessage = "Debe ingresar un EsPublica")]
+        // boolean property indicating whether the school is public or not
+        [Required(ErrorMessage = "Debe ingresar un si es verdadero que la escuela es pública o no. True or False")]
         [DisplayName("Es publica la escuela?")]
         public bool? EsPublica { get; set;}
     }
