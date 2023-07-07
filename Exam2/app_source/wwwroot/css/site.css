@@ -14,5 +14,14 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: #FFFBE9;
+}
+
+.custom-navbar {
+    background-color: #AD8B73;
+}
+
+a {
+    color: #FFFBE9;
 }
