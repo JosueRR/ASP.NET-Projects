@@ -9,10 +9,14 @@ using app.Models;
 
 namespace app.Handlers
 {
+    /* Class that manages interaction with database*/
     public class SchoolHandler
     {
+        // SQL connection
         private SqlConnection conexion;
         private string rutaConexion;
+
+        // Constructor of class
         public SchoolHandler()
         {
             var builder = WebApplication.CreateBuilder();
@@ -20,6 +24,8 @@ namespace app.Handlers
             builder.Configuration.GetConnectionString("ContextoDeSchool");
             conexion = new SqlConnection(rutaConexion);
         }
+
+        // Creates a data table
         private DataTable CrearTablaConsulta(string consulta)
         {
             SqlCommand comandoParaConsulta = new SqlCommand(consulta,
@@ -32,6 +38,8 @@ namespace app.Handlers
             conexion.Close();
             return consultaFormatoTabla;
         }
+
+        // Retrieves a list of all Schools from the database
         public List<SchoolModel> ObtenerSchools()
         {
             List<SchoolModel> schools = new List<SchoolModel>();
@@ -53,6 +61,7 @@ namespace app.Handlers
             return schools;
         }
 
+        // Inserts a new school into the database
         public bool CrearSchool(SchoolModel school)
         {
             var consulta = @"INSERT INTO [dbo].[Escuelas] ([Nombre], [Provincia], [Estado], [NumeroAulas], [EsPublica])
@@ -71,6 +80,7 @@ namespace app.Handlers
             return exito;
         }
 
+        // Updates an existing school in the database
         public bool EditarSchool(SchoolModel school)
         {
             var consulta = @"UPDATE [dbo].[Escuelas] SET
@@ -96,6 +106,7 @@ namespace app.Handlers
             return exito;
         }
 
+        // Deletes a school from the database
         public bool BorrarSchool(SchoolModel school)
         {
             var consulta = @"DELETE [dbo].[Escuelas] WHERE Id=@Id";

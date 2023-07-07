@@ -6,20 +6,23 @@ namespace app.Controllers
 {
     public class SchoolController : Controller
     {
+        // Handles the GET request for Index
         public IActionResult Index()
         {
             SchoolHandler schoolHandler = new SchoolHandler();
             var schools = schoolHandler.ObtenerSchools();
-            ViewBag.MainTitle = "Lista de Escuelas";
+            ViewBag.MainTitle = "List of Schools";
             return View(schools);
         }
 
+        // Handles the GET request for the CrearSchool request, returns view
         [HttpGet]
         public ActionResult CrearSchool()
         {
             return View();
         }
 
+        // Handles the POST request for the CrearSchool request
         [HttpPost]
         public ActionResult CrearSchool(SchoolModel school)
         {
@@ -33,7 +36,7 @@ namespace app.Controllers
 
                     if (ViewBag.ExitoAlCrear)
                     {
-                        ViewBag.Message = "La escuela " + school.Nombre + " fue creada con éxito. ";
+                        ViewBag.Message = "The school " + school.Nombre + " was created succesfully ";
                         ModelState.Clear();
                     }
                 }
@@ -41,11 +44,12 @@ namespace app.Controllers
             }
             catch
             {
-                ViewBag.Message = "Algo salió mal y no se pudo crear la escuela";
+                ViewBag.Message = "Ups, something went wrong while trying to create a new school. Please try again";
                 return View();
             }
         }
 
+        // Handles the GET request for the EditarSchool, receives an identificador parameter to identify the school to edit
         [HttpGet]
         public ActionResult EditarSchool(int? identificador)
         {
@@ -65,11 +69,13 @@ namespace app.Controllers
             }
             catch
             {
+                ViewBag.Message = "Ups, something went wrong while trying to edit a school. Please try again";
                 vista = RedirectToAction("Index");
             }
             return vista;
         }
 
+        // Handles the POST  request for the EditarSchool, receives a modified SchoolModel object as a parameter
         [HttpPost]
         public ActionResult EditarSchool(SchoolModel school)
         {
@@ -79,9 +85,14 @@ namespace app.Controllers
                 schoolHandler.EditarSchool(school);
                 return RedirectToAction("Index", "School");
             }
-            catch { return View(); }
+            catch 
+            {
+                ViewBag.Message = "Ups, something went wrong while trying to edit a school. Please try again";
+                return View();
+            }
         }
 
+        // Handles the GET request for the BorrarSchool, receives an id param to identify the school to delete
         [HttpGet]
         public ActionResult BorrarSchool(int? identificador)
         {
@@ -106,6 +117,7 @@ namespace app.Controllers
             return vista;
         }
 
+        // Handles the POST request for the BorrarSchool, receives a SchoolModel object as a param
         [HttpPost]
         public ActionResult BorrarSchool(SchoolModel school)
         {
