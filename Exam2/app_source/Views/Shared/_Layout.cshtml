@@ -10,7 +10,7 @@
 
 <body>
     <header>
-        <nav class="navbar custom-navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-4">
+        <nav id="mainNavbar" class="navbar custom-navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-4">
             <div class="container-fluid">
                 <a class="navbar-brand text-white fs-1 p-1" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -20,15 +20,15 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle custom-button text-white fs-6 rounded pl-5" type="button" id="schoolDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle custom-button text-white fs-6 rounded pl-5" type="button" id="schoolMainDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                 Schools
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="schoolDropdown">
                                 <li>
-                                    <a class="dropdown-item" href="@Url.Action("Index", "School")">List of Schools</a>
+                                    <a id="indexListSchools" class="dropdown-item" href="@Url.Action("Index", "School")">List of Schools</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="@Url.Action("CrearSchool", "School")">Create a School</a>
+                                    <a id="indexCreateSchool" class="dropdown-item" href="@Url.Action("CrearSchool", "School")">Create a School</a>
                                 </li>
                             </ul>
                         </li>
