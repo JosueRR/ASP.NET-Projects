@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using laboratorio6.Models;
 using System.Data;
 using System.Data.SqlClient;
 using Microsoft.AspNetCore.Builder;
