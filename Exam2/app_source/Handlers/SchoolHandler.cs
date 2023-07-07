@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using app.Models;
+using System;
 
 namespace app.Handlers
 {
@@ -61,23 +62,54 @@ namespace app.Handlers
             return schools;
         }
 
+        // Retrieves a specific School from the database based on ID
+        public SchoolModel ObtenerSchool(int id)
+        {
+            string consulta = $"SELECT * FROM Escuelas WHERE Id = {id}";
+            DataTable tablaResultado = CrearTablaConsulta(consulta);
+
+            if (tablaResultado.Rows.Count > 0)
+            {
+                DataRow columna = tablaResultado.Rows[0];
+
+                return new SchoolModel
+                {
+                    Id = Convert.ToInt32(columna["Id"]),
+                    Nombre = Convert.ToString(columna["Nombre"]),
+                    Provincia = Convert.ToString(columna["Provincia"]),
+                    Estado = Convert.ToString(columna["Estado"]),
+                    NumeroAulas = Convert.ToInt32(columna["NumeroAulas"]),
+                    EsPublica = Convert.ToBoolean(columna["EsPublica"])
+                };
+            }
+
+            return null; // Return null if the school with the specified ID is not found
+        }
+
         // Inserts a new school into the database
         public bool CrearSchool(SchoolModel school)
         {
-            var consulta = @"INSERT INTO [dbo].[Escuelas] ([Nombre], [Provincia], [Estado], [NumeroAulas], [EsPublica])
+            try
+            {
+                var consulta = @"INSERT INTO [dbo].[Escuelas] ([Nombre], [Provincia], [Estado], [NumeroAulas], [EsPublica])
                 VALUES (@Nombre, @Provincia, @Estado, @NumeroAulas, @EsPublica)";
-            var comandoParaConsulta = new SqlCommand(consulta, conexion);
-            comandoParaConsulta.Parameters.AddWithValue("@Nombre", school.Nombre);
-            comandoParaConsulta.Parameters.AddWithValue("@Provincia", school.Provincia);
-            comandoParaConsulta.Parameters.AddWithValue("@Estado", school.Estado);
-            comandoParaConsulta.Parameters.AddWithValue("@NumeroAulas", school.NumeroAulas);
-            comandoParaConsulta.Parameters.AddWithValue("@EsPublica", school.EsPublica);
+                var comandoParaConsulta = new SqlCommand(consulta, conexion);
+                comandoParaConsulta.Parameters.AddWithValue("@Nombre", school.Nombre);
+                comandoParaConsulta.Parameters.AddWithValue("@Provincia", school.Provincia);
+                comandoParaConsulta.Parameters.AddWithValue("@Estado", school.Estado);
+                comandoParaConsulta.Parameters.AddWithValue("@NumeroAulas", school.NumeroAulas);
+                comandoParaConsulta.Parameters.AddWithValue("@EsPublica", school.EsPublica);
 
-            conexion.Open();
-            bool exito = comandoParaConsulta.ExecuteNonQuery() >= 1;
-            conexion.Close();
+                conexion.Open();
+                bool exito = comandoParaConsulta.ExecuteNonQuery() >= 1;
+                conexion.Close();
 
-            return exito;
+                return exito;
+            }
+            catch
+            { 
+                return false;
+            }
         }
 
         // Updates an existing school in the database
@@ -109,16 +141,23 @@ namespace app.Handlers
         // Deletes a school from the database
         public bool BorrarSchool(SchoolModel school)
         {
-            var consulta = @"DELETE [dbo].[Escuelas] WHERE Id=@Id";
+            try
+            {
+                var consulta = @"DELETE [dbo].[Escuelas] WHERE Id=@Id";
 
-            var cmdParaConsulta = new SqlCommand(consulta, conexion);
-            cmdParaConsulta.Parameters.AddWithValue("@Id", school.Id);
+                var cmdParaConsulta = new SqlCommand(consulta, conexion);
+                cmdParaConsulta.Parameters.AddWithValue("@Id", school.Id);
 
-            conexion.Open();
-            bool exito = cmdParaConsulta.ExecuteNonQuery() >= 1;
-            conexion.Close();
+                conexion.Open();
+                bool exito = cmdParaConsulta.ExecuteNonQuery() >= 1;
+                conexion.Close();
 
-            return exito;
+                return exito;
+            }
+            catch 
+            {
+                return false;
+            }
         }
     }
 }
