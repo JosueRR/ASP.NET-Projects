@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using app.Handlers;
 using app.Models;
-using laboratorio6.Handlers;
 
 namespace app.Controllers
 {

@@ -11,17 +11,16 @@
 <h1><@ViewBag.MainTitle</h1>
 
 <div>
-    <a href="@Url.Action("CrearSchool", "School")"
-       class="btn btn-success"> Crear Escuela </a>
-    <table class="table">
-        <thead>
+    <h1 class="p-4">List of Schools</h1>
+    <table class="table table-striped table-bordered table-rounded p-4">
+        <thead class="table-dark">
             <tr>
-                <th>Id</th>
-                <th>Nombre</th>
-                <th>Provincia</th>
-                <th>Estado</th>
-                <th>Cant. Aulas</th>
-                <th>Es Publica</th>
+                <th class="wrap">Id</th>
+                <th class="wrap">Nombre</th>
+                <th class="wrap">Provincia</th>
+                <th class="wrap">Estado</th>
+                <th class="wrap">Cant. Aulas</th>
+                <th class="wrap">Es publica?</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -34,23 +33,14 @@
                     <td>@item.Nombre</td>
                     <td>@item.Provincia</td>
                     <td>@item.Estado</td>
-                    <td>@item.NumeroAulas</td>
+                    <td class="text-center">@item.NumeroAulas</td>
                     <td>@item.EsPublica</td>
-
                     <td>
-                        @Html.ActionLink("Editar", "EditarSchool",
-                    new {identificador = item.Id},
-                    new {@class = "btn btn alert-info",
-                    @onclick = "return confirm('Desea editar esta escuela?')"})
+                        <a href="@Url.Action("EditarSchool", new { identificador = item.Id })" class="btn btn-info">Edit</a>
                     </td>
-
                     <td>
-                        @Html.ActionLink("Borrar", "BorrarSchool",
-                    new {identificador = item.Id},
-                    new {@class = "btn btn alert-danger",
-                    @onclick = "return confirm('Desea borrar esta escuela?')"})
+                        <a href="@Url.Action("BorrarSchool", new { identificador = item.Id })" class="btn btn-danger">Delete</a>
                     </td>
-
                 </tr>
             }
         </tbody>

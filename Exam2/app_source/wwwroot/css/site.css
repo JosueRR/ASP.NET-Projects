@@ -23,5 +23,32 @@ body {
 }
 
 a {
+    color: #CEAB93;
+}
+
+.custom-button {
+    background-color: #CEAB93;
+}
+
+.table tbody tr td {
+    font-size: 16px;
+}
+
+.table thead th {
+    font-size: 21px;
+    white-space: nowrap;
+}
+
+.table {
+    padding-top: 20px;
+}
+
+.create-button {
+    background-color: #AD8B73;
     color: #FFFBE9;
+}
+
+.create-button:hover {
+        background-color: #CEAB93;
+        color: #AD8B73;
 }

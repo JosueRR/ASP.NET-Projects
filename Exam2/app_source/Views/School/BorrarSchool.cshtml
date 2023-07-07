@@ -5,53 +5,42 @@
 @model app.Models.SchoolModel
 
 @{
-    ViewBag.Title = "Borrar Pelicula";
+    ViewBag.Title = "Borrar School";
 }
 
 <html>
 <head>
 </head>
 <body>
-    @using (Html.BeginForm("BorrarSchool", "School", FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
-        @Html.AntiForgeryToken()
-        <h1>Formulario de borrar una película</h1>
-        @Html.HiddenFor(model=>model.Id)
-        // OJO ESTO SE AGREGO
-        <div class="form-horizontal">
-            <div class="form-group">
-                @Html.LabelFor(model => model.Nombre)
-                @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control"})
-                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger"})
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                @using (Html.BeginForm("BorrarSchool", "School", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <h1 class="text-center mt-5">Are you sure you want to delete this school?</h1>
+                    <div class="alert alert-danger mt-4">
+                        <p class="fs-5">
+                            <strong>Nombre:</strong> @Model.Nombre<br />
+                            <strong>Provincia:</strong> @Model.Provincia<br />
+                            <strong>Estado:</strong> @Model.Estado<br />
+                            <strong>Número de Aulas:</strong> @Model.NumeroAulas<br />
+                            <strong>Es Pública:</strong> @Model.EsPublica
+                        </p>
+                        <strong>
+                            <p class="fs-5 text-center">
+                            This action cannot be undone.
+                            </p>
+                        </strong>
+                    </div>
+                    <div class="text-center mt-4">
+                        <input type="submit" class="btn btn-danger me-3" value="Yes, I'm sure" />
+                        <a class="btn btn-secondary" href="@Url.Action("Index", "School")">No, go back</a>
+                    </div>
+                    @Html.HiddenFor(model => model.Id)
+                }
             </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Provincia)
-                @Html.TextBoxFor(model => model.Provincia, new { @class = "form-control"})
-                @Html.ValidationMessageFor(model => model.Provincia, "", new { @class = "text-danger"})
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Estado)
-                @Html.TextBoxFor(model => model.Estado, new { @class = "form-control"})
-                @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger"})
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.NumeroAulas)
-                @Html.TextBoxFor(model => model.NumeroAulas, new { @class = "form-control"})
-                @Html.ValidationMessageFor(model => model.NumeroAulas, "", new { @class = "text-danger"})
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.EsPublica)
-                @Html.TextBoxFor(model => model.EsPublica, new { @class = "form-control"})
-                @Html.ValidationMessageFor(model => model.EsPublica, "", new { @class = "text-danger"})
-            </div>
-
-            <input type="submit" class="btn btn-success" value="Borrar" />
         </div>
-    }
-
+    </div>
 </body>
 </html>
