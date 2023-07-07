@@ -34,38 +34,38 @@
                 @using (Html.BeginForm("CrearSchool", "School", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
                     @Html.AntiForgeryToken()
-                    <div class="form-group mb-3">
+                    <div class="form-group mb-3" id="create-Nombre">
                         @Html.LabelFor(model => model.Nombre)
                         @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", placeholder = "Example: Escuela Juan Rafael Mora Porras" })
                         @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
                     </div>
 
-                    <div class="form-group mb-3">
+                    <div class="form-group mb-3" id="create-Provincia">
                         @Html.LabelFor(model => model.Provincia)
                         @Html.TextBoxFor(model => model.Provincia, new { @class = "form-control", placeholder = "Example: San José" })
                         @Html.ValidationMessageFor(model => model.Provincia, "", new { @class = "text-danger" })
                     </div>
 
-                    <div class="form-group mb-3">
+                    <div class="form-group mb-3" id="create-Estado">
                         @Html.LabelFor(model => model.Estado)
                         @Html.TextBoxFor(model => model.Estado, new { @class = "form-control", placeholder = "Example: Desamparados" })
                         @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
                     </div>
 
-                    <div class="form-group mb-3">
+                    <div class="form-group mb-3" id="create-NumeroAulas">
                         @Html.LabelFor(model => model.NumeroAulas)
                         @Html.TextBoxFor(model => model.NumeroAulas, new { @class = "form-control", placeholder = "Example: 5" })
                         @Html.ValidationMessageFor(model => model.NumeroAulas, "", new { @class = "text-danger" })
                     </div>
 
-                    <div class="form-group mb-3">
+                    <div class="form-group mb-3" id="create-EsPublica">
                         @Html.LabelFor(model => model.EsPublica)
                         @Html.TextBoxFor(model => model.EsPublica, new { @class = "form-control", placeholder = "Example: True" })
                         @Html.ValidationMessageFor(model => model.EsPublica, "", new { @class = "text-danger" })
                     </div>
 
                     <div class="form-group text-center pt-3">
-                        <input type="submit" class="btn create-button" value="Create" />
+                        <input id="create-submit" type="submit" class="btn create-button" value="Create" />
                     </div>
                 }
             </div>

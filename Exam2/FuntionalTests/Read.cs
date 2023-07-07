@@ -7,14 +7,14 @@ using System.Threading;
 
 namespace FuntionalTests
 {
+    /* justificación: Operación CRUD READ, se prueba el despliegue correcto de la lista de escuelas 
+    Resultado esperado: El resultado cumple ya que, se abre la app. se ingresa en la opción de lista de escuelas
+    y se despliegan las escuelas, realizando así la operación READ */
     [TestClass]
     public class Read
     {
         IWebDriver _driver;
 
-        /* justificación: Operación CRUD READ, se prueba el despliegue correcto de la lista de escuelas 
-         Resultado esperado: El resultado cumple ya que, se abre la app. se ingresa en la opción de lista de escuelas
-        y se despliegan las escuelas, realizando así la operación READ */
         [TestMethod]
         public void AbleToReadSchools()
         {

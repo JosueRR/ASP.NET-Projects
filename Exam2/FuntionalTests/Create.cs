@@ -7,8 +7,59 @@ using System.Threading;
 
 namespace FuntionalTests
 {
+    /* justificación: Operación CRUD CREATE, se prueba el despliegue correcto de la pagina de inicio, la seleccion de 
+    * la opcion Create School y su posterior creacion. Con esto se prueba que se puedan crear objetos de forma correcta
+    Resultado esperado: El resultado cumple ya que, se abre la app. y siguiendo los pasos se crea una escuela */
     [TestClass]
-    internal class Create
+    public class Create
     {
+        IWebDriver _driver;
+
+        [TestMethod]
+        public void AbleToCreateSchools()
+        {
+            _driver = new ChromeDriver();
+            _driver.Navigate().GoToUrl("https://localhost:7107/");
+
+            var mainNavbar = By.Id("mainNavbar");
+            var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
+            wait.Until(
+                ExpectedConditions.ElementIsVisible(mainNavbar));
+
+            var schoolsButton = _driver.FindElement(By.Id("schoolMainDropdown"));
+            schoolsButton.Click();
+            var schoolCreate = _driver.FindElement(By.Id("indexCreateSchool"));
+            schoolCreate.Click();
+
+            Thread.Sleep(10000); // 2-second delay to observe the webpage before the assertd
+
+
+            var NombreField = _driver.FindElement(By.Id("Nombre"));
+            var ProvinciaField = _driver.FindElement(By.Id("Provincia"));
+            var EstadoField = _driver.FindElement(By.Id("Estado"));
+            var NumeroAulasField = _driver.FindElement(By.Id("NumeroAulas"));
+            var EsPublicaField = _driver.FindElement(By.Id("EsPublica"));
+            var CrearSubmit = _driver.FindElement(By.Id("create-submit"));
+
+            Thread.Sleep(10000); // 2-second delay to observe the webpage before the assertd
+
+
+            NombreField.SendKeys("CRUD");
+            ProvinciaField.SendKeys("CRUD");
+            EstadoField.SendKeys("CRUD");
+            NumeroAulasField.SendKeys("3");
+            EsPublicaField.SendKeys("False");
+            CrearSubmit.Click();
+
+            Thread.Sleep(2000); // 2-second delay to observe the webpage before the assertd
+
+            Assert.IsTrue(_driver.Url.Contains("CrearSchool"));
+        }
+
+        [TestCleanup]
+        public void Cleanup()
+        {
+            _driver.Quit();
+        }
     }
 }
